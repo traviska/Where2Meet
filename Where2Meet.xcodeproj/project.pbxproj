@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CA8CCD219E586D70037E688 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA8CCD119E586D70037E688 /* CoreLocation.framework */; };
 		3CADEAA319E2E3D80002CB06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA219E2E3D80002CB06 /* AppDelegate.swift */; };
 		3CADEAA519E2E3D80002CB06 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA419E2E3D80002CB06 /* FirstViewController.swift */; };
 		3CADEAA719E2E3D80002CB06 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA619E2E3D80002CB06 /* SecondViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CA8CCD119E586D70037E688 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3CADEA9D19E2E3D80002CB06 /* Where2Meet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Where2Meet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CADEAA119E2E3D80002CB06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CADEAA219E2E3D80002CB06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CA8CCD219E586D70037E688 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +64,7 @@
 		3CADEA9419E2E3D80002CB06 = {
 			isa = PBXGroup;
 			children = (
+				3CA8CCD119E586D70037E688 /* CoreLocation.framework */,
 				3CADEA9F19E2E3D80002CB06 /* Where2Meet */,
 				3CADEAB719E2E3D80002CB06 /* Where2MeetTests */,
 				3CADEA9E19E2E3D80002CB06 /* Products */,
@@ -411,6 +415,7 @@
 				3CADEAC019E2E3D80002CB06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CADEAC119E2E3D80002CB06 /* Build configuration list for PBXNativeTarget "Where2MeetTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +424,7 @@
 				3CADEAC319E2E3D80002CB06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

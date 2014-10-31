@@ -7,20 +7,26 @@
 //
 
 import UIKit
+import CoreLocation
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
+    var geocoder: CLGeocoder?
     
     let appDele = UIApplication.sharedApplication().delegate as AppDelegate
     
     @IBOutlet var postcodeField: UITextField!
+    @IBOutlet weak var lookupIndicator: UIActivityIndicatorView!
     @IBOutlet var locationList: UITableView!
     
     @IBOutlet var addButton: UIButton!
     
     @IBAction func addLocation(sender: UIButton) {
         if (!postcodeField.text.isEmpty) {
+            self.getPlacemarkFromLocation(postcodeField.text)
             appDele.postcodes.append(postcodeField.text)
-            self.locationList.reloadData()
+            lookupIndicator.startAnimating()
+            //self.locationList.reloadData()
         }
     }
 
@@ -43,10 +49,35 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         var cell:UITableViewCell = self.locationList.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        cell.textLabel?.text = appDele.postcodes[indexPath.row]
+        
+        var cellLabelText = appDele.postcodes[indexPath.row]
+        var newLocation: CLLocationCoordinate2D = appDele.coordinates[indexPath.row]
+        cellLabelText += " Lat: \(newLocation.latitude) Lon: \(newLocation.longitude)"
+        cell.textLabel?.text = cellLabelText
         return cell
     }
 
+    func getPlacemarkFromLocation(postCode: String) {
+        
+        var geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(postCode, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+            if let placemark = placemarks?[0] as? CLPlacemark {
+                var latitude = placemark.location.coordinate.latitude
+                var longitude = placemark.location.coordinate.longitude
+                
+                var location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude,longitude: longitude)
+                self.didReceiveGeocodeAddress(location)
+            }
+        })
+    }
+    
+    func didReceiveGeocodeAddress(location: CLLocationCoordinate2D) {
+        
+        appDele.coordinates.append(location)
+        self.locationList.reloadData()
+        self.lookupIndicator.stopAnimating()
+        self.lookupIndicator.hidden = true
+    }
 
 }
 
