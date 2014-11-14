@@ -26,7 +26,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.getPlacemarkFromLocation(postcodeField.text)
             appDele.postcodes.append(postcodeField.text)
             lookupIndicator.startAnimating()
-            //self.locationList.reloadData()
         }
     }
 
@@ -56,6 +55,23 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = cellLabelText
         return cell
     }
+    
+    // called when a row deletion action is confirmed
+    func tableView(tableView: UITableView!,
+        commitEditingStyle editingStyle: UITableViewCellEditingStyle,
+        forRowAtIndexPath indexPath: NSIndexPath!) {
+            switch editingStyle {
+            case .Delete:
+                // remove the deleted item from the model
+                appDele.postcodes.removeAtIndex(indexPath.row)
+                appDele.coordinates.removeAtIndex(indexPath.row)
+                
+                // remove the deleted item from the `UITableView`
+                self.locationList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            default:
+                return
+            }
+    }
 
     func getPlacemarkFromLocation(postCode: String) {
         
@@ -76,7 +92,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         appDele.coordinates.append(location)
         self.locationList.reloadData()
         self.lookupIndicator.stopAnimating()
-        self.lookupIndicator.hidden = true
+        self.locationList.editing = true
+        postcodeField.text = ""
     }
 
 }

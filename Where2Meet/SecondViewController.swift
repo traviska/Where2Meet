@@ -53,12 +53,35 @@ class SecondViewController: UIViewController {
             var polyline = MKPolyline(coordinates: &a, count: a.count)
             mapView.addOverlay(polyline)
         }
+
+        var placemarks:NSMutableArray = NSMutableArray()
+        var myRequest = MKLocalSearchRequest()
+        myRequest.naturalLanguageQuery = "pub"
+
+        myRequest.region = self.mapView.region //need to define region later
+        var search = MKLocalSearch(request: myRequest)
+        search.startWithCompletionHandler {
+            (response:MKLocalSearchResponse!, error:NSError!) in
+            if (error == nil) {
+
+                for item in response.mapItems {
+                    placemarks.addObject((item as MKMapItem).placemark)
+                }
+                
+                self.mapView.showAnnotations(placemarks, animated: true)
+            } else {
+                println("Error")
+            }
+        }
         
         // 3
         let annotation = MKPointAnnotation()
         annotation.setCoordinate(location)
         annotation.title = "Meet Near Here"
-        mapView.addAnnotation(annotation)
+        //placemarks.addObject(annotation)
+        //mapView.addAnnotation(annotation)
+        
+
     }
     
     
