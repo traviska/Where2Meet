@@ -8,35 +8,57 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate  {
     
     var geocoder: CLGeocoder?
+    let locationManager = CLLocationManager()
     
     let appDele = UIApplication.sharedApplication().delegate as AppDelegate
+
+    @IBOutlet var addView: UIView!
     
     @IBOutlet var postcodeField: UITextField!
     @IBOutlet weak var lookupIndicator: UIActivityIndicatorView!
     @IBOutlet var locationList: UITableView!
     
     @IBOutlet var addButton: UIButton!
+    @IBOutlet weak var addCurrentButton: UIButton!
     
     @IBAction func addLocation(sender: UIButton) {
         if (!postcodeField.text.isEmpty) {
             self.getPlacemarkFromLocation(postcodeField.text)
-            appDele.postcodes.append(postcodeField.text)
+            
             lookupIndicator.startAnimating()
         }
+    }
+    
+    @IBAction func addCurrentLocation() {
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        lookupIndicator.startAnimating()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //Make the keyboard disappear upon return
+        postcodeField.delegate = self;
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +100,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var geocoder = CLGeocoder()
         geocoder.geocodeAddressString(postCode, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
             if let placemark = placemarks?[0] as? CLPlacemark {
+                self.appDele.postcodes.append(self.postcodeField.text)
                 var latitude = placemark.location.coordinate.latitude
                 var longitude = placemark.location.coordinate.longitude
                 
@@ -88,12 +111,43 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func didReceiveGeocodeAddress(location: CLLocationCoordinate2D) {
-        
+
         appDele.coordinates.append(location)
         self.locationList.reloadData()
         self.lookupIndicator.stopAnimating()
         self.locationList.editing = true
         postcodeField.text = ""
+    }
+    
+
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        
+        locationManager.stopUpdatingLocation()
+        
+        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
+            
+            if (error != nil) {
+                println("Reverse geocoder failed with error \(error.localizedDescription)")
+                return
+            }
+            
+            if placemarks.count > 0 {
+                let pm = placemarks[0] as CLPlacemark
+                println("Current postcode = \(pm.postalCode)")
+                self.appDele.postcodes.append(pm.postalCode)
+                
+                var latitude = manager.location.coordinate.latitude
+                var longitude = manager.location.coordinate.longitude
+                var location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude,longitude: longitude)
+                self.didReceiveGeocodeAddress(location)
+            } else {
+                println("Problem with the data received from geocoder")
+            }
+        })
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Error while updating location \(error.localizedDescription)")
     }
 
 }

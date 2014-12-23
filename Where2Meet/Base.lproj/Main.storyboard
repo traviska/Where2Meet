@@ -75,6 +75,17 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KXE-dj-Syc">
                                 <rect key="frame" x="290" y="86" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElD-tQ-7tA">
+                                <rect key="frame" x="554" y="81" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="FDK-8L-dGV"/>
+                                    <constraint firstAttribute="width" constant="30" id="daM-iI-rJQ"/>
+                                </constraints>
+                                <state key="normal" image="my_location-128"/>
+                                <connections>
+                                    <action selector="addCurrentLocation" destination="9pv-A4-QxB" eventType="touchUpInside" id="Dmd-84-NpC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -82,20 +93,22 @@
                             <constraint firstItem="zUA-T7-YM3" firstAttribute="leading" secondItem="CaV-Oe-DyJ" secondAttribute="trailing" constant="8" id="1eA-gx-05L"/>
                             <constraint firstAttribute="centerX" secondItem="HjX-wT-F5l" secondAttribute="centerX" id="1hl-Gj-COi"/>
                             <constraint firstItem="HjX-wT-F5l" firstAttribute="top" secondItem="QTh-Y2-cOM" secondAttribute="bottom" constant="8" id="34P-g5-pwn"/>
+                            <constraint firstItem="Np9-is-web" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="4t1-Ne-5LL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Np9-is-web" secondAttribute="trailing" constant="-16" id="8YK-2X-hk5"/>
                             <constraint firstItem="HjX-wT-F5l" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="90A-wD-oNn"/>
                             <constraint firstItem="CaV-Oe-DyJ" firstAttribute="top" secondItem="Np9-is-web" secondAttribute="bottom" constant="17" id="9Bf-te-Efe"/>
                             <constraint firstAttribute="centerX" secondItem="KXE-dj-Syc" secondAttribute="centerX" id="Afh-Yn-UN9"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="HjX-wT-F5l" secondAttribute="bottom" constant="8" id="FdZ-Ii-xu6"/>
+                            <constraint firstItem="ElD-tQ-7tA" firstAttribute="top" secondItem="Np9-is-web" secondAttribute="bottom" constant="17" id="GH2-qa-sG2"/>
                             <constraint firstItem="zUA-T7-YM3" firstAttribute="top" secondItem="Np9-is-web" secondAttribute="bottom" constant="17" id="LCn-Tt-5qx"/>
                             <constraint firstItem="HjX-wT-F5l" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="LdF-02-m23"/>
                             <constraint firstItem="Np9-is-web" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-21" id="NgT-7V-ajx"/>
                             <constraint firstItem="KXE-dj-Syc" firstAttribute="top" secondItem="Np9-is-web" secondAttribute="bottom" constant="22" id="OIn-Oc-PKo"/>
                             <constraint firstItem="QTh-Y2-cOM" firstAttribute="height" secondItem="zUA-T7-YM3" secondAttribute="height" id="R2s-7e-GSF"/>
-                            <constraint firstItem="Np9-is-web" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="UH2-nZ-5j5"/>
                             <constraint firstItem="QTh-Y2-cOM" firstAttribute="height" secondItem="CaV-Oe-DyJ" secondAttribute="height" id="ax6-md-gfM"/>
                             <constraint firstItem="HjX-wT-F5l" firstAttribute="top" secondItem="QTh-Y2-cOM" secondAttribute="bottom" constant="8" id="cQN-XL-p29"/>
                             <constraint firstItem="QTh-Y2-cOM" firstAttribute="leading" secondItem="zUA-T7-YM3" secondAttribute="trailing" constant="8" id="n1E-jL-Ogk"/>
+                            <constraint firstItem="ElD-tQ-7tA" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="n57-c4-DNt"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="HjX-wT-F5l" secondAttribute="bottom" constant="8" id="nhR-oj-wNc"/>
                             <constraint firstItem="zUA-T7-YM3" firstAttribute="leading" secondItem="CaV-Oe-DyJ" secondAttribute="trailing" constant="8" id="qZx-7i-uSG"/>
                             <constraint firstItem="QTh-Y2-cOM" firstAttribute="leading" secondItem="zUA-T7-YM3" secondAttribute="trailing" constant="8" id="rRd-MC-CNB"/>
                             <constraint firstItem="QTh-Y2-cOM" firstAttribute="top" secondItem="Np9-is-web" secondAttribute="bottom" constant="17" id="zch-iv-ebG"/>
@@ -112,9 +125,12 @@
                     <tabBarItem key="tabBarItem" title="Add Locations" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="addButton" destination="QTh-Y2-cOM" id="2i2-pl-XQr"/>
+                        <outlet property="addCurrentButton" destination="ElD-tQ-7tA" id="Tf5-pI-DZo"/>
+                        <outlet property="addView" destination="tsR-hK-woN" id="Kdf-4c-S68"/>
                         <outlet property="locationList" destination="HjX-wT-F5l" id="whh-f2-45b"/>
                         <outlet property="lookupIndicator" destination="KXE-dj-Syc" id="aC4-ee-13q"/>
                         <outlet property="postcodeField" destination="zUA-T7-YM3" id="eOE-vC-yZW"/>
+                        <outlet property="view" destination="tsR-hK-woN" id="Sl3-50-LEL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -168,7 +184,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="phoneSB" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -188,6 +204,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="my_location-128" width="128" height="128"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

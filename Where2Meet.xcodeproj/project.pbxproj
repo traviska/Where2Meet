@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C12BD911A385BB0007D48AC /* Main~ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C12BD901A385BB0007D48AC /* Main~ipad.storyboard */; };
 		3CA8CCD219E586D70037E688 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA8CCD119E586D70037E688 /* CoreLocation.framework */; };
 		3CADEAA319E2E3D80002CB06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA219E2E3D80002CB06 /* AppDelegate.swift */; };
 		3CADEAA519E2E3D80002CB06 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA419E2E3D80002CB06 /* FirstViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C12BD901A385BB0007D48AC /* Main~ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main~ipad.storyboard"; sourceTree = "<group>"; };
 		3CA8CCD119E586D70037E688 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3CADEA9D19E2E3D80002CB06 /* Where2Meet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Where2Meet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CADEAA119E2E3D80002CB06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				3CADEAAB19E2E3D80002CB06 /* Images.xcassets */,
 				3CADEAAD19E2E3D80002CB06 /* LaunchScreen.xib */,
 				3CADEAA019E2E3D80002CB06 /* Supporting Files */,
+				3C12BD901A385BB0007D48AC /* Main~ipad.storyboard */,
 			);
 			path = Where2Meet;
 			sourceTree = "<group>";
@@ -168,6 +171,11 @@
 				TargetAttributes = {
 					3CADEA9C19E2E3D80002CB06 = {
 						CreatedOnToolsVersion = 6.0.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					3CADEAB319E2E3D80002CB06 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -199,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C12BD911A385BB0007D48AC /* Main~ipad.storyboard in Resources */,
 				3CADEAAA19E2E3D80002CB06 /* Main.storyboard in Resources */,
 				3CADEAAF19E2E3D80002CB06 /* LaunchScreen.xib in Resources */,
 				3CADEAAC19E2E3D80002CB06 /* Images.xcassets in Resources */,
@@ -349,6 +358,7 @@
 				INFOPLIST_FILE = Where2Meet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -359,6 +369,7 @@
 				INFOPLIST_FILE = Where2Meet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

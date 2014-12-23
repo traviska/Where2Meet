@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "first.pdf",
-      "unassigned" : false
+      "scale" : "1x",
+      "filename" : "my_location-128.png"
     }
   ],
   "info" : {
