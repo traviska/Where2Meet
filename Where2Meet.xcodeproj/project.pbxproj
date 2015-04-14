@@ -16,6 +16,13 @@
 		3CADEAAC19E2E3D80002CB06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CADEAAB19E2E3D80002CB06 /* Images.xcassets */; };
 		3CADEAAF19E2E3D80002CB06 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CADEAAD19E2E3D80002CB06 /* LaunchScreen.xib */; };
 		3CADEABB19E2E3D80002CB06 /* Where2MeetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEABA19E2E3D80002CB06 /* Where2MeetTests.swift */; };
+		3CC3BF8B1A517AFC0012F0DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA219E2E3D80002CB06 /* AppDelegate.swift */; };
+		3CC3BF8C1A517AFF0012F0DC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA419E2E3D80002CB06 /* FirstViewController.swift */; };
+		3CC3BF8D1A517B030012F0DC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CADEAA619E2E3D80002CB06 /* SecondViewController.swift */; };
+		3CC3BF8E1A51AC390012F0DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CADEAA819E2E3D80002CB06 /* Main.storyboard */; };
+		3CC3BF8F1A51AC400012F0DC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CADEAAD19E2E3D80002CB06 /* LaunchScreen.xib */; };
+		3CC3BF901A51B2B80012F0DC /* Main~ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C12BD901A385BB0007D48AC /* Main~ipad.storyboard */; };
+		3CC3BF911A51B2BD0012F0DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CADEAAB19E2E3D80002CB06 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,10 +96,10 @@
 				3CADEAA419E2E3D80002CB06 /* FirstViewController.swift */,
 				3CADEAA619E2E3D80002CB06 /* SecondViewController.swift */,
 				3CADEAA819E2E3D80002CB06 /* Main.storyboard */,
+				3C12BD901A385BB0007D48AC /* Main~ipad.storyboard */,
 				3CADEAAB19E2E3D80002CB06 /* Images.xcassets */,
 				3CADEAAD19E2E3D80002CB06 /* LaunchScreen.xib */,
 				3CADEAA019E2E3D80002CB06 /* Supporting Files */,
-				3C12BD901A385BB0007D48AC /* Main~ipad.storyboard */,
 			);
 			path = Where2Meet;
 			sourceTree = "<group>";
@@ -171,6 +178,7 @@
 				TargetAttributes = {
 					3CADEA9C19E2E3D80002CB06 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 4LL5YKZZU7;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -218,6 +226,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC3BF8F1A51AC400012F0DC /* LaunchScreen.xib in Resources */,
+				3CC3BF911A51B2BD0012F0DC /* Images.xcassets in Resources */,
+				3CC3BF8E1A51AC390012F0DC /* Main.storyboard in Resources */,
+				3CC3BF901A51B2B80012F0DC /* Main~ipad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC3BF8D1A517B030012F0DC /* SecondViewController.swift in Sources */,
+				3CC3BF8C1A517AFF0012F0DC /* FirstViewController.swift in Sources */,
+				3CC3BF8B1A517AFC0012F0DC /* AppDelegate.swift in Sources */,
 				3CADEABB19E2E3D80002CB06 /* Where2MeetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +373,7 @@
 				INFOPLIST_FILE = Where2Meet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -369,7 +384,7 @@
 				INFOPLIST_FILE = Where2Meet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

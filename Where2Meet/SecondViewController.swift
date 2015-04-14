@@ -78,8 +78,8 @@ class SecondViewController: UIViewController {
         let annotation = MKPointAnnotation()
         annotation.setCoordinate(location)
         annotation.title = "Meet Near Here"
-        //placemarks.addObject(annotation)
-        //mapView.addAnnotation(annotation)
+        placemarks.addObject(annotation)
+        mapView.addAnnotation(annotation)
         
 
     }
